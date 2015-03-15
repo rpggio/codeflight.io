@@ -22,12 +22,16 @@ body {
   height: 60px;
 }
 
-form.beta-signup {
+.beta-signup {
   margin-top:50px;
   width: 330px;
 }
 
-form.beta-signup button {
+.beta-signup button,input,div {
   margin-top: 10px;
   width: 100%;
+}
+
+.beta-signup div {
+  padding: 8px 12px;
 }

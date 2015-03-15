@@ -48,7 +48,7 @@
       </div>
     </nav>
 
-    <div class="jumbotron" ng-app="cfd" data-ng-controller="IndexController as index" data-ng-cloak="">
+    <div class="jumbotron" ng-app="cfd" ng-controller="IndexController as index" ng-cloak>
       <div class="container">
         <div class="row">
           <div class="col-md-8">
@@ -61,11 +61,11 @@
               <button type="submit" class="btn btn-success" ng-disabled="signupForm.$invalid" ng-click="signupForm.$valid && index.submit()">Let me know when Beta is available!</button>
             </form>
 
-            <div class="alert-success" ng-hide="!index.submitSuccess">
+            <div class="alert-success" ng-if="index.submitSuccess">
               Thanks for signing up. We will let you know when the playground is open.
             </div>
 
-            <div class="alert-danger" ng-hide="!index.submitFail">
+            <div class="alert-danger" ng-if="index.submitFail">
               Sorry, there was a problem submitting the request. You can 
               <a href="mailto:contact@codeflight.io">email us</a>
               your registration request.

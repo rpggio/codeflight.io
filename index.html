@@ -1,101 +1,33 @@
+---
+layout: default
+---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-
-    <title>CodeFlight.io</title>
-
-    <style>
-      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-        display: none !important;
-      }
-    </style>
-
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles <font></font>r this template -->
-    <link href="assets/css/jumbotron.css" rel="stylesheet">
-
-    <link href="assets/css/codeflight.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <!--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-      <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-  </head>
-
-  <body>
-
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">CodeFlight</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-        </div><!--/.navbar-collapse -->
+<div class="jumbotron" ng-app="cfd" ng-controller="IndexController as index" ng-cloak>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Uplift your software design skills.</h1>
+        <p>CodeFlight provides design challenges that you solve iteratively, using tools you are familiar with.</p>
       </div>
-    </nav>
+      <div class="col-md-2 beta-signup">
+        <form novalidate name="signupForm">
+          <input type="email" name="email" required placeholder="Email address" class="form-control" ng-model="index.email">
+          <button type="submit" class="btn btn-success" ng-disabled="signupForm.$invalid" ng-click="signupForm.$valid && index.submit()">Let me know when Beta is available!</button>
+        </form>
 
-    <div class="jumbotron" ng-app="cfd" ng-controller="IndexController as index" ng-cloak>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <h1>Uplift your software design skills.</h1>
-            <p>CodeFlight provides design challenges that you solve iteratively, using tools you are familiar with.</p>
-          </div>
-          <div class="col-md-2 beta-signup">
-            <form novalidate name="signupForm">
-              <input type="email" name="email" required placeholder="Email address" class="form-control" ng-model="index.email">
-              <button type="submit" class="btn btn-success" ng-disabled="signupForm.$invalid" ng-click="signupForm.$valid && index.submit()">Let me know when Beta is available!</button>
-            </form>
+        <div class="alert-success" ng-if="index.submitSuccess">
+          Thanks for signing up. We will let you know when the playground is open.
+        </div>
 
-            <div class="alert-success" ng-if="index.submitSuccess">
-              Thanks for signing up. We will let you know when the playground is open.
-            </div>
-
-            <div class="alert-danger" ng-if="index.submitFail">
-              Sorry, there was a problem submitting the request. You can 
-              <a href="mailto:contact@codeflight.io">email us</a>
-              your registration request.
-            </div>
-          </div>
+        <div class="alert-danger" ng-if="index.submitFail">
+          Sorry, there was a problem submitting the request. You can 
+          <a href="mailto:contact@codeflight.io">email us</a>
+          your registration request.!!!
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; CodeFlight LLC 2015</p>
-      </div>
-    </footer>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/angular.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="index.js"></script>
-
-      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-      <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-  </body>
-</html>
+{% include scripts.html %}
+<script src="index.js"></script>

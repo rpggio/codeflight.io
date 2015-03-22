@@ -3,21 +3,43 @@ layout: default
 ---
 
 <div class="row" ng-controller="UserController as uc">
-    <div class="col-sm-8">
+    <div class="col-md-9">
         <div ng-if="!uc.userId">No user ID specified</div>
         <div ng-if="uc.userId && !uc.user">No user found</div>
         <div ng-if="uc.user">
             <h1>[[ uc.user.username ]]</h1>
+            <h4>Commits</h4>
+            &nbsp;<br>
 
-            <div ng-repeat="checkin in uc.checkins">
-                <h4>Stage: [[ checkin.currentStageNumber ]] </h4>
-                <span style="font-size:80%">At: [[ checkin.insertedAt | date:'medium' ]]</span> <br>
-                Result: [[ checkin.outcome ]]
+            <div class="userCommit panel [[ commit.outcome=='success' && 'panel-success' ]] [[ commit.outcome!='success' && 'panel-danger' ]]"
+                ng-repeat="commit in uc.commits"  
+                ng-class="">
+
+                <div class="panel-heading">
+                    <div class="row panel-title">
+                        <div class="col-md-1"><span class="boldNumber text-middle">[[ commit.currentStageNumber ]]</span></div>
+                        <div class="col-md-3"><span class="vertical-middle">[[ commit.outcome | splitOnCase | capitalize ]]</span></div>
+                        <div class="col-md-3 pull-right"><small class="pull-right">[[ commit.challenge ]]</small></div>
+                    </div>
+                </div>
+                <div class="panel-body row">
+                    <div class="col-md-8">
+                        [[ commit.outcomeDetail ]]
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dateTimeStamp text-right">[[ commit.submittedAt | date:'short' ]]</div>
+                    </div>
+                </div>
+
+
             </div>
+
         </div>
 
     </div>
-    <div class="col-sm-3 col-sm-offset-1">
+    <div class="col-md-3">
+        <h3>User commits</h3>
+        This view shows the commit history of the user, and the assessment results. If an assessment failed, you can view the output from the build (if needed), solution process and the test run.
     </div>
 </div>
 

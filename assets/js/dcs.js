@@ -1,14 +1,36 @@
 var dcs = (function () {
     "use strict";
 
-    var apiBaseUrl = 'http://ec2-52-1-38-108.compute-1.amazonaws.com:8280'
+    //var apiBaseUrl = 'http://ec2-52-1-38-108.compute-1.amazonaws.com:8280'
+    var apiBaseUrl = 'http://localhost:8280'
     
     var dcs = angular.module('dcs', []);
+
+    //---------- providers ----------
 
     dcs.config(['$interpolateProvider', function ($interpolateProvider) { 
         $interpolateProvider.startSymbol('[['); 
         $interpolateProvider.endSymbol(']]'); 
       }]); 
+
+    //---------- filters ----------
+
+    dcs.filter('splitOnCase', function () {
+        return function (input) {
+            return input.replace(/([A-Z])/g, ' $1').trim();
+        };
+    });
+
+    dcs.filter('capitalize', function() {
+      return function(input, scope) {
+        if (!input){
+            return input;
+        }
+        return input.substring(0,1).toUpperCase() + input.substring(1);
+      }
+    });
+
+    //---------- services ----------
 
     dcs.factory("dcsApi", [
         "$http", function ($http) {
@@ -23,8 +45,8 @@ var dcs = (function () {
                     return $http.get(usersUrl + '/' + userId)
                         .then(function (r) { return r.data; });
                 },
-                checkins: function (userId) {
-                    return $http.get(usersUrl + '/' + userId + '/checkins')
+                commits: function (userId) {
+                    return $http.get(usersUrl + '/' + userId + '/commits')
                         .then(function (r) { return r.data; });
                 }
             };
@@ -45,5 +67,4 @@ var dcs = (function () {
     ]);
 
     return dcs;
-
 })();

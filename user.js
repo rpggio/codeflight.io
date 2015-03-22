@@ -16,14 +16,20 @@
          dcsApi.users.get(self.userId)
            .then(function(user) { self.user = user; });
 
-         dcsApi.users.checkins(self.userId)
-           .then(function(checkins) { self.checkins = checkins; });
+         dcsApi.users.commits(self.userId)
+           .then(function(commits) { self.commits = commits; });
 
        }
    }
 
-   UserController.$inject = ['$scope', '$http', '$location', 'dcsApi'];
+  UserController.$inject = ['$scope', '$http', '$location', 'dcsApi'];
 
-   dcs.controller('UserController', UserController);
+  // UserController.prototype.getCommitClass(commit) {
+  //     if(commit.outcome=='success'){
+  //       return 
+  //     }
+  // }
+
+  dcs.controller('UserController', UserController);
 
 }());

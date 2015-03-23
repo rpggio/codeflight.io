@@ -15,23 +15,30 @@ layout: default
                 ng-repeat="commit in uc.commits"  
                 ng-class="">
 
-                <div class="panel-heading">
+                <div class="panel-heading" ng-click="uc.toggleSelectedCommit(commit)">
                     <div class="row panel-title">
                         <div class="col-md-1"><span class="boldNumber text-middle">[[ commit.currentStageNumber ]]</span></div>
                         <div class="col-md-3"><span class="vertical-middle">[[ commit.outcome | splitOnCase | capitalize ]]</span></div>
                         <div class="col-md-3 pull-right"><small class="pull-right">[[ commit.challenge ]]</small></div>
                     </div>
                 </div>
-                <div class="panel-body row">
-                    <div class="col-md-8">
-                        [[ commit.outcomeDetail ]]
+                <div class="panel-body">
+                    <div class="row margin-bottom-md">
+                        <div class="col-md-8">
+                            [[ commit.outcomeDetail ]]
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dateTimeStamp text-right">[[ commit.committedAt | date:'short' ]]</div>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="dateTimeStamp text-right">[[ commit.submittedAt | date:'short' ]]</div>
+                    <div class="testResults row">
+                        <div class="col-md-12" collapse="uc.selectedCommitId != commit.id">
+                            <!-- [[ commit | json ]] <br> -->
+                            <!-- <div class="outputFrame" ng-bind-html="commit.testOutput"></div> -->
+                            <iframe ng-src="[[ commit.testOutputHref ]]" width="100%" height=""> </iframe>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
 
         </div>

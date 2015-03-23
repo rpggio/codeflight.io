@@ -4,6 +4,11 @@ body {
   margin-bottom: 60px;
 }
 
+.margin-bottom-xs { margin-bottom: 2px; }  
+.margin-bottom-sm { margin-bottom: 4px; } 
+.margin-bottom-md { margin-bottom: 8px; }
+.margin-bottom-lg { margin-bottom: 16px; } 
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -47,4 +52,14 @@ body {
 
 .vertical-middle {
   vertical-align: middle;
+}
+
+.userCommit .outputFrame {
+    height: 800px;
+    overflow-y: scroll;
+}
+
+.userCommit .testResults iframe {
+  width:100%;
+  height: 600px;
 }

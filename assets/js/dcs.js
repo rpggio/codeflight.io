@@ -4,7 +4,7 @@ var dcs = (function () {
     //var apiBaseUrl = 'http://ec2-52-1-38-108.compute-1.amazonaws.com:8280'
     var apiBaseUrl = 'http://localhost:8280'
     
-    var dcs = angular.module('dcs', []);
+    var dcs = angular.module('dcs', ['ui.bootstrap', 'ngSanitize']);
 
     //---------- providers ----------
 
@@ -51,6 +51,17 @@ var dcs = (function () {
                 }
             };
 
+            var commitsUrl = apiBaseUrl + '/commits';
+            var commits = {
+                getTestOutputPath: function(commitId){
+                    return commitsUrl + '/' + commitId + '/testOutput.html';
+                },
+                getTestOutput: function (commitId) {
+                    return $http.get(commitsUrl + '/' + commitId + '/testOutput.html')
+                        .then(function (r) { return r.data; });
+                }
+            };
+
             var contactsUrl = apiBaseUrl + '/contacts';
             var contacts = {
                 add: function (contact) {
@@ -61,6 +72,7 @@ var dcs = (function () {
 
             return {
                 contacts: contacts,
+                commits: commits,
                 users: users
             };
         }

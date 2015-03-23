@@ -1,16 +1,15 @@
 var dcs = (function () {
     "use strict";
-
-    //var apiBaseUrl = 'http://ec2-52-1-38-108.compute-1.amazonaws.com:8280'
-    var apiBaseUrl = 'http://localhost:8280'
-    
+   
     var dcs = angular.module('dcs', ['ui.bootstrap', 'ngSanitize']);
 
-    //---------- providers ----------
+    //---------- bootstrap ----------
 
     dcs.config(['$interpolateProvider', function ($interpolateProvider) { 
+        
         $interpolateProvider.startSymbol('[['); 
         $interpolateProvider.endSymbol(']]'); 
+
       }]); 
 
     //---------- filters ----------
@@ -32,10 +31,22 @@ var dcs = (function () {
 
     //---------- services ----------
 
-    dcs.factory("dcsApi", [
-        "$http", function ($http) {
 
-            var usersUrl = apiBaseUrl + '/users';
+    dcs.factory("dcsApiUrl", [
+        "$location", function($location) {
+            var url = 'http://ec2-52-1-38-108.compute-1.amazonaws.com:8280'
+            var host = $location.host();
+            if(host.toUpperCase() == 'LOCALHOST' || host == '127.0.0.1'){
+               url = 'http://localhost:8280'
+            }
+            console.log("using api URL: " + url);
+            return url;
+    }]);
+
+    dcs.factory("dcsApi", [
+        "$http", "dcsApiUrl", function ($http, dcsApiUrl) {
+
+            var usersUrl = dcsApiUrl + '/users';
             var users = {
                 getList: function () {
                     return $http.get(usersUrl)
@@ -51,7 +62,7 @@ var dcs = (function () {
                 }
             };
 
-            var commitsUrl = apiBaseUrl + '/commits';
+            var commitsUrl = dcsApiUrl + '/commits';
             var commits = {
                 getTestOutputPath: function(commitId){
                     return commitsUrl + '/' + commitId + '/testOutput.html';
@@ -62,7 +73,7 @@ var dcs = (function () {
                 }
             };
 
-            var contactsUrl = apiBaseUrl + '/contacts';
+            var contactsUrl = dcsApiUrl + '/contacts';
             var contacts = {
                 add: function (contact) {
                     return $http.post(contactsUrl, contact)

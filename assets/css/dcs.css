@@ -4,10 +4,15 @@ body {
   margin-bottom: 60px;
 }
 
-.margin-bottom-xs { margin-bottom: 2px; }  
-.margin-bottom-sm { margin-bottom: 4px; } 
-.margin-bottom-md { margin-bottom: 8px; }
-.margin-bottom-lg { margin-bottom: 16px; } 
+.margin-bottom1-xs { margin-bottom: 2px; }  
+.margin-bottom1-sm { margin-bottom: 4px; } 
+.margin-bottom1-md { margin-bottom: 8px; }
+.margin-bottom1-lg { margin-bottom: 16px; } 
+
+.margin-bottom2-xs { margin-bottom: 3px; }  
+.margin-bottom2-sm { margin-bottom: 6px; } 
+.margin-bottom2-md { margin-bottom: 12px; }
+.margin-bottom2-lg { margin-bottom: 24px; } 
 
 .footer {
   position: absolute;

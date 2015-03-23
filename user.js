@@ -1,29 +1,32 @@
  (function () {
     "use strict";
 
-    var UserController = function ($scope, $http, $location, $sce, dcsApi) {
+    var UserController = function ($scope, $http, $location, $sce, $interval, dcsApi) {
        var self = this;
+
+       var commitRefreshIntervalMs = 10000;
 
        self.$scope = $scope;
        self.$http = $http;
        self.$location = $location;
        self.$sce = $sce;
+       self.$interval = $interval;
        self.dcsApi = dcsApi;
 
        self.userId = self.$location.search().userId;
 
        if(self.userId) {
-
-         dcsApi.users.get(self.userId)
+         self.dcsApi.users.get(self.userId)
            .then(function(user) { self.user = user; });
 
-         dcsApi.users.commits(self.userId)
-           .then(function(commits) { self.commits = commits; });
-
+          self.refreshCommits()
+            .then(function(){
+                self.$interval(function() { self.refreshCommits(); }, commitRefreshIntervalMs);
+             });
        }
    }
 
-  UserController.$inject = ['$scope', '$http', '$location', '$sce', 'dcsApi'];
+  UserController.$inject = ['$scope', '$http', '$location', '$sce', '$interval', 'dcsApi'];
 
   UserController.prototype.toggleSelectedCommit = function(commit) {
     var self = this;
@@ -58,6 +61,12 @@
   UserController.prototype.getBuildOutputHref = function(commit){
     var self = this;
     return self.dcsApi.commits.getBuildOutputHref(commit.id);
+  };
+
+  UserController.prototype.refreshCommits = function(){
+    var self = this;
+    return self.dcsApi.users.commits(self.userId)
+      .then(function(commits) { self.commits = commits; });
   };
 
   dcs.controller('UserController', UserController);

@@ -43,9 +43,7 @@
   UserController.prototype.loadCommitDetails = function(commit){
     var self = this;
 
-    var href = this.dcsApi.commits.getTestOutputPath(commit.id);
-    //this.$sce.trustAsUrl(href);
-    //href = this.$sce.getTrustedResourceUrl(href);
+    var href = self.dcsApi.commits.getTestOutputHref(commit.id);
     href = self.$sce.trustAsResourceUrl(href);
     commit.testOutputHref = href;
 
@@ -55,6 +53,11 @@
     //       commit.testOutput = self.$sce.trustAsHtml(testOutput); 
     //     }
     //   });
+  };
+
+  UserController.prototype.getBuildOutputHref = function(commit){
+    var self = this;
+    return self.dcsApi.commits.getBuildOutputHref(commit.id);
   };
 
   dcs.controller('UserController', UserController);

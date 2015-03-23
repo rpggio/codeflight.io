@@ -24,17 +24,16 @@ layout: default
                 </div>
                 <div class="panel-body">
                     <div class="row margin-bottom2-md">
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                             [[ commit.outcomeDetail ]]
                         </div>
-                        <div class="col-md-4">
-                            <div class="dateTimeStamp text-right">[[ commit.committedAt | date:'short' ]]</div>
+                        <div class="col-md-3 text-right">
+                            <span class="dateTimeStamp">[[ commit.committedAt | date:'short' ]]</span><br>
+                            <a class="small" href="[[ uc.getBuildOutputHref(commit) ]]" target="_blank">Build output</a>
                         </div>
                     </div>
                     <div class="testResults row">
                         <div class="col-md-12" collapse="uc.selectedCommitId != commit.id">
-                            <!-- [[ commit | json ]] <br> -->
-                            <!-- <div class="outputFrame" ng-bind-html="commit.testOutput"></div> -->
                             <iframe ng-src="[[ commit.testOutputHref ]]" width="100%" height=""> </iframe>
                         </div>
                     </div>

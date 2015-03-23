@@ -64,8 +64,11 @@ var dcs = (function () {
 
             var commitsUrl = dcsApiUrl + '/commits';
             var commits = {
-                getTestOutputPath: function(commitId){
+                getTestOutputHref: function(commitId){
                     return commitsUrl + '/' + commitId + '/testOutput.html';
+                },
+                getBuildOutputHref: function(commitId){
+                    return commitsUrl + '/' + commitId + '/buildOutput.txt';
                 },
                 getTestOutput: function (commitId) {
                     return $http.get(commitsUrl + '/' + commitId + '/testOutput.html')

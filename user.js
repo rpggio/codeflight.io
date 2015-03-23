@@ -4,7 +4,7 @@
     var UserController = function ($scope, $http, $location, $sce, $interval, dcsApi) {
        var self = this;
 
-       var commitRefreshIntervalMs = 10000;
+       var commitRefreshIntervalMs = 60000;
 
        self.$scope = $scope;
        self.$http = $http;
@@ -36,19 +36,20 @@
     }
     else if(self.selectedCommitId == commit.id) {
       self.selectedCommitId = null;
+      self.selectedCommitOutputHref = null;
     }
     else{
       self.selectedCommitId = commit.id;
-      self.loadCommitDetails(commit);
+      self.selectedCommitOutputHref = self.loadCommitOutputHref(commit);
     }
   };
 
-  UserController.prototype.loadCommitDetails = function(commit){
+  UserController.prototype.loadCommitOutputHref = function(commit){
     var self = this;
 
     var href = self.dcsApi.commits.getTestOutputHref(commit.id);
     href = self.$sce.trustAsResourceUrl(href);
-    commit.testOutputHref = href;
+    return href;
 
     // self.dcsApi.commits.getTestOutput(commit.id)
     //   .then(function(testOutput) { 
@@ -66,7 +67,9 @@
   UserController.prototype.refreshCommits = function(){
     var self = this;
     return self.dcsApi.users.commits(self.userId)
-      .then(function(commits) { self.commits = commits; });
+      .then(function(commits) { 
+        self.commits = commits;
+      });
   };
 
   dcs.controller('UserController', UserController);

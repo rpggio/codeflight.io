@@ -34,7 +34,8 @@ layout: default
                     </div>
                     <div class="testResults row">
                         <div class="col-md-12" collapse="uc.selectedCommitId != commit.id">
-                            <iframe ng-src="[[ commit.testOutputHref ]]" width="100%" height=""> </iframe>
+                            <iframe ng-if="uc.selectedCommitId == commit.id" ng-src="[[ uc.selectedCommitOutputHref ]]" width="100%" height=""> </iframe>
+                            <p ng-if="!commit.hasTestOutput"><i>No test output available.</i></p>
                         </div>
                     </div>
                 </div>

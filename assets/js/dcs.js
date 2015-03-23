@@ -16,6 +16,9 @@ var dcs = (function () {
 
     dcs.filter('splitOnCase', function () {
         return function (input) {
+            if(!input){
+                return input;
+            }
             return input.replace(/([A-Z])/g, ' $1').trim();
         };
     });

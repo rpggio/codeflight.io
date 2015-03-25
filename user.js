@@ -4,7 +4,7 @@
     var UserController = function ($scope, $http, $location, $sce, $interval, dcsApi) {
        var self = this;
 
-       var commitRefreshIntervalMs = 60000;
+       var commitRefreshIntervalMs = 10000;
 
        self.$scope = $scope;
        self.$http = $http;
@@ -14,15 +14,16 @@
        self.dcsApi = dcsApi;
 
        self.userId = self.$location.search().userId;
+       self.commits = [];
 
        if(self.userId) {
          self.dcsApi.users.get(self.userId)
            .then(function(user) { self.user = user; });
 
-          self.refreshCommits()
-            .then(function(){
-                self.$interval(function() { self.refreshCommits(); }, commitRefreshIntervalMs);
-             });
+         self.refreshCommits()
+           .then(function(){
+               self.$interval(function() { self.refreshCommits(); }, commitRefreshIntervalMs);
+            });
        }
    }
 
@@ -68,7 +69,7 @@
     var self = this;
     return self.dcsApi.users.commits(self.userId)
       .then(function(commits) { 
-        self.commits = commits;
+        Util.syncObjects(self.commits, commits, 'id', true);
       });
   };
 

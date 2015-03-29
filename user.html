@@ -11,6 +11,8 @@ layout: default
             <h4>Commits</h4>
             &nbsp;<br>
 
+            <p ng-if="!uc.commits || !uc.commits.length">No commits yet</p>
+
             <div class="userCommit panel [[ commit.outcome=='success' && 'panel-success' ]] [[ commit.outcome!='success' && 'panel-danger' ]]"
                 ng-repeat="commit in uc.commits | orderBy:'-committedAt'"  
                 ng-class="">

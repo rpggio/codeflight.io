@@ -1,12 +1,12 @@
 
 html {
-    background: url('../../images/flock lg pad top.jpg') no-repeat center center fixed; 
+    background: url('../../images/flock 2710 fade1.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 
-.footer {
+.main-content, body, .footer {
     background-color: transparent;
 }

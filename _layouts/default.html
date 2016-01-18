@@ -7,12 +7,6 @@
 
 {% include meta.html %}
 
-    <style>
-      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-        display: none !important;
-      }
-    </style>
-
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/jumbotron.css" rel="stylesheet">
     <link href="/assets/css/dcs.css" rel="stylesheet">
@@ -31,7 +25,7 @@
         <![endif]-->
   </head>
 
-  <body ng-app="dcs" ng-cloak>
+  <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -59,7 +53,11 @@
 
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">&copy; CodeFlight LLC 2015</p>
+        <p class="text-muted">
+          &copy; CodeFlight LLC 2016 | 
+          <a href="mailto:info@codeflight.io" class="">Contact</a>
+        </p>
+
       </div>
     </footer>
 

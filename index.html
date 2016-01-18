@@ -3,32 +3,88 @@ layout: default
 fancy: true
 ---
 
-<div class="jumbotron" ng-controller="IndexController as index">
+<div class="jumbotron">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
-        <h1>Uplift your software design skills.</h1>
-        <p>CodeFlight provides design challenges that you solve iteratively, using tools you are familiar with.</p>
+      <div class="col-md-7">
+        <h1>Develop concepts before code</h1>
+        <p>CodeFlight provides software consulting for project preparedness and concept development.</p>
       </div>
-      <div class="col-md-2 beta-signup">
-        <form novalidate name="signupForm">
-          <input type="email" name="email" required placeholder="Email address" class="form-control" ng-model="index.email">
-          <button type="submit" class="btn btn-success" ng-disabled="signupForm.$invalid" ng-click="signupForm.$valid && index.submit()">Let me know when Beta is available!</button>
-        </form>
 
-        <div class="alert-success" ng-if="index.submitSuccess">
-          Thanks for signing up. We will let you know when the playground is open.
-        </div>
-
-        <div class="alert-danger" ng-if="index.submitFail">
-          Sorry, there was a problem submitting the request. You can 
-          <a href="mailto:contact@codeflight.io">email us</a>
-          your registration request.!!!
-        </div>
+      <div class="col-md-3 contact-us-box">
+        <p class="button-label">Set up a meeting to discuss your project:</p>
+        <a href="mailto:info@codeflight.io" class="btn btn-success contact-us">Contact us</a>
       </div>
+
     </div>
   </div>
 </div>
 
+  <div class="container main-content">
+    <div class="row">
+
+      <div class="col-md-5 feature">
+        <h3><b>Your time and resources are limited.</b> Don't spend them learning things you could understand now.</h3>
+
+        <p>
+        <b>Challenge your assumptions while the cost of updates is free.</b> The more code that gets written, the more prohibitive it is to change it. We know about how unchallenged assumptions can sap the momentum and viability of a project.
+        </p>  
+
+        <p>
+        When ideas are implemented in code, they can become cemented. These create the risk of your project stalling out. Discover new ways to see your product when it's most influential and the least risk. We excel at asking questions that create opportunities.
+        </p>  
+
+        <p>
+        </p>  
+      </div>
+
+      <div class="col-md-5 feature">
+        <h3><b>Design is a discovery process.</b> Building too early is expensive.</h3>
+
+        <p> 
+        Concept development is a process that is never finished. As you refine your product, your own mindset is being changed. How do you know when your ideas are ready to be tested in code and when they aren't?
+        </p>        
+
+        <p>
+        <b>The success of your project depends on how you respond to new information.</b> How can you tell if your thinking has become frozen before the first line is written? Will you recognize when it is time to pivot?
+        </p>        
+
+      </div>
+      
+    </div>
+
+    <div class="row">
+      <div class="col-md-5 feature">
+        <h3><b>Innovation is experimentation.</b> Don't bet your project on the first iteration of your ideas.</h3>
+
+        <p>
+        <b>Don't let blind spots hold back your project.</b> We excel in helping leaders and creators see what they have missed. Whether in the maturity of the concept, the suitability of the technology, or the reliability of the delivery process, we will improve your chances for success.
+        </p>
+
+        <p>
+        We provide a sounding board to help you check your development plans before starting the project. You can have a conversation with a senior developer with a breadth of development experience.
+        </p>
+
+        <p>
+        </p>  
+      </div>
+
+      <div class="col-md-5 feature">
+        <h3><b>Come prepared</b> when you engage with developers and designers.</h3>
+
+        <p>
+        Lack of clarity in the concept phase is only magnified in implementation. Implementers will not always tell you if your requirements are lacking, whether because they don't recognize it or because it's not in their interest. You may not get what you imagined.
+        </p>
+
+        <p>
+        <b>Know what to expect from developers.</b> Developers are interested engaging problems, architectural purity, and technical ingenuity. Often these motivations align with your own product goals. Do you know how to recognize and respond when they are not?
+        </p>  
+
+        <p>
+        </p>  
+      </div>
+
+    </div>
+  </div>
+
 {% include scripts.html %}
-<script src="index.js"></script>

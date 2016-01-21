@@ -3,29 +3,6 @@
 
 @import "bootstrap/bootstrap";
 
-.feature-col {
-  @extend .col-md-4
-}
-
-
-.masonry-container {
-   -moz-column-width: 18em;
-   -webkit-column-width: 18em;
-   -moz-column-gap: 1em;
-   -webkit-column-gap:1em; 
-}
-
-.masonry-container > div {
-   display: inline-block;
-   padding:  .25rem;
-   width:  100%; 
-}
-
-// .well {
-//  position:relative;
-//  display: block;
-// }
-
 .vertical-center {
   /* Internet Explorer 10 */
   display:-ms-flexbox;
@@ -44,14 +21,11 @@
   box-align:center;
 }
 
-#main-content {
+.feature-col {
+  @extend .col-md-4
 }
 
-.col-full {
-  @extend .col-md-10;
-}
-
-#feature-boxes > div.feature {
+.feature-col > .feature {
   @extend .panel;
 
   margin-top: 15px;
@@ -89,7 +63,7 @@
   }
 }
 
-#feature-boxes > div.feature.opened {
+.feature-col > .feature.opened {
 
   .detail {
     max-height: 500px;

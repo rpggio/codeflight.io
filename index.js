@@ -15,19 +15,33 @@ $(document).ready(function() {
                 .filter(function(x){ return x; });
             features = _.shuffle(features);
 
-            var boxSel = d3.select("#feature-boxes")
-                .selectAll("div.feature")
-                .data(features)
+            var featureBins = [[],[],[]];
+            var width = featureBins.length;
+            for(var i = 0, l = features.length ; i < l ; i++) {
+                featureBins[i % width].push(features[i]);
+            }
+
+            var columnSel = d3.select("#feature-boxes")
+                .selectAll("div.feature-col")
+                .data(featureBins)
                 .enter()
                 .append("div")
-                .classed("feature", true);
+                .classed("feature-col", true);
 
-            var boxTitleSel = boxSel
+            var boxSel = columnSel
+                .selectAll("div.feature")
+                .data(function(d) { return d; })
+                .enter()
+                .append("div")
+                .classed("feature", true)
+                .attr("tabindex", 0);
+
+            boxSel
                 .append("h3")
                 .classed("title", true)
                 .text(function(d) { return d.title; });
 
-            var boxDetailSel = boxSel
+            boxSel
                 .append("div")
                 .classed("detail", true)
                 .append("p")
@@ -35,7 +49,12 @@ $(document).ready(function() {
 
             boxSel.on("click", function(d){
                 var sel = d3.select(this);
-                sel.classed("opened", !sel.classed("opened"));
+                var newOpened = !sel.classed("opened");
+                sel.classed("opened", newOpened);
+
+                if(newOpened && this.scrollIntoView){
+                    this.scrollIntoView();
+                }
             });
         }
     });

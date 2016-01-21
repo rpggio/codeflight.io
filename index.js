@@ -15,26 +15,12 @@ $(document).ready(function() {
                 .filter(function(x){ return x; });
             features = _.shuffle(features);
 
-            var featureBins = [[],[],[]];
-            var width = featureBins.length;
-            for(var i = 0, l = features.length ; i < l ; i++) {
-                featureBins[i % width].push(features[i]);
-            }
-
-            var columnSel = d3.select("#feature-boxes")
-                .selectAll("div.feature-col")
-                .data(featureBins)
+            var boxSel = d3.select("#feature-boxes")
+                .selectAll("div.feature")
+                .data(features)
                 .enter()
                 .append("div")
-                .classed("feature-col", true);
-
-            var boxSel = columnSel
-                .selectAll("div.feature-box")
-                .data(function(d) { return d; })
-                .enter()
-                .append("div")
-                .classed("feature-box", true)
-                .attr("tabindex", 0);
+                .classed("feature", true);
 
             var boxTitleSel = boxSel
                 .append("h3")
@@ -42,10 +28,15 @@ $(document).ready(function() {
                 .text(function(d) { return d.title; });
 
             var boxDetailSel = boxSel
-                .append("p")
+                .append("div")
                 .classed("detail", true)
+                .append("p")
                 .text(function(d) { return d.detail; });
 
+            boxSel.on("click", function(d){
+                var sel = d3.select(this);
+                sel.classed("opened", !sel.classed("opened"));
+            });
         }
     });
 }); 

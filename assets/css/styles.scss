@@ -1,0 +1,67 @@
+---
+---
+
+@import "bootstrap/bootstrap";
+
+.feature-col {
+  @extend .col-md-4
+}
+
+div.feature-box {
+  @extend .panel;
+
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  .title {
+    @extend .panel-heading;
+      
+  /* Internet Explorer 10 */
+  display:-ms-flexbox;
+  -ms-flex-align:center;
+
+  /* Firefox */
+  display:-moz-box;
+  -moz-box-align:center;
+
+  /* Safari, Opera, and Chrome */
+  display:-webkit-box;
+  -webkit-box-align:center;
+
+  /* W3C */
+  display:box;
+  box-align:center;
+
+    min-height: 4.5em;
+    margin: 0;
+    background-color: $gray-dark;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 26pt;
+  }
+
+  .detail {
+    @extend .panel-body;
+
+    border: 2px solid $gray-light;
+    padding: 14px;
+
+    display:block;
+  }
+}
+
+.feature-box:focus {
+
+    min-height: 3em;
+
+
+  .detail {
+    display:block;
+  }
+
+}
+

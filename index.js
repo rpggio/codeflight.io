@@ -51,10 +51,6 @@ $(document).ready(function() {
                 var sel = d3.select(this);
                 var newOpened = !sel.classed("opened");
                 sel.classed("opened", newOpened);
-
-                if(newOpened && this.scrollIntoView){
-                    this.scrollIntoView();
-                }
             });
         }
     });

@@ -45,14 +45,24 @@ $(document).ready(function() {
                 .append("div")
                 .classed("detail", true)
                 .append("p")
-                .text(function(d) { return d.detail; });
+                .html(function(d) { return d.detail; });
 
             boxSel.on("click", function(d){
                 var sel = d3.select(this);
-                var newOpened = !sel.classed("opened");
-                sel.classed("opened", newOpened);
+                var opened = sel.classed("opened");
+                if(!opened){
+                    sel.classed("opened", true);
+                    var openedCount = d3.selectAll("div.feature.opened")[0].length; 
+                    ga('send', 'event', "home", "open-feature", d.title, openedCount);                   
+                }
             });
         }
     });
+
+    window.contactClick = function() {
+        console.log('foo');
+        ga('send', 'event', "home", "contact-click");                   
+    }
+
 }); 
 

@@ -60,7 +60,6 @@ $(document).ready(function() {
     });
 
     window.contactClick = function() {
-        console.log('foo');
         ga('send', 'event', "home", "contact-click");                   
     }
 

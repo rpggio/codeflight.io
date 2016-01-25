@@ -1,7 +1,18 @@
 ---
 ---
 
+// Bootstrap variable overrides
+
+$font-size-base:             16px;
+$jumbotron-padding:          20px;
+
+
+// Load dependencies
+
 @import "bootstrap/bootstrap";
+
+
+// Styles
 
 .vertical-center {
   /* Internet Explorer 10 */
@@ -20,6 +31,24 @@
   display:box;
   box-align:center;
 }
+
+.btn.contact-us {
+  width: 100%;
+}
+
+.contact-us-box {
+  margin-top: 4em;
+  padding: 4em 40px;
+  min-height: 14em;
+  border-left: solid 2px $gray-light;
+
+  .button-label {
+    font-size: larger;
+    font-weight: bold; 
+  }
+
+}
+
 
 #feature-boxes {
 
@@ -64,6 +93,10 @@
 
       p {
         padding: 14px;
+      }
+
+      b {
+        color: $gray;
       }
     }
   }

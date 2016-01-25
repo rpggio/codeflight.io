@@ -49,7 +49,6 @@ $jumbotron-padding:          20px;
 
 }
 
-
 #feature-boxes {
 
   .feature-col {
@@ -128,4 +127,14 @@ $jumbotron-padding:          20px;
 
   }
 
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+  padding-top: 6px;
 }

@@ -32,7 +32,7 @@ Starting implementation too early is expensive. Concept development is a process
 ### API design
 Designing a modern public-facing API involves a unique knowledge set. Since the field is still developing, much of the information is outdated or contradictory. We can introduce to your team the fundamental conventions that are considered standard. <b>We can help your team build a consistent API starting with a clear understanding of your own domain.</b>
 
-### Test automation consensus
+### Pragmatic test automation 
 Everyone agrees that it is useful, but everybody seems to disagree about how much is needed. The decision comes down to the scope and objectives of the project. <b>We can introduce you to some appropriate tools for testing, and help establish test automation goals that reflect the project goals.</b>
 
 ### Continuous Delivery

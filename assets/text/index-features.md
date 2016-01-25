@@ -15,7 +15,7 @@ Decisions about legacy systems reflect the mindset of the decision-makers. An in
 Time and resources are limited. Don't spend them learning things you could know now. A little well-timed advice could save a lot of effort. <b>We can point out direct paths and shorten your bootstrap phase, so you can spend your resources on delivering the product.</b> 
 
 ### Too Smart to Fail
-What you don't know can hurt you, if you unprepared to respond effectively. We know how unchallenged assumptions can sap the momentum and viability of a project. <b>Use our experience to check your assumptions about your product and implementation.</b> We will walk through your project plan together and identify lurking pitfalls.
+What you don't know can hurt you, if you are unprepared to respond well. We know how unchallenged assumptions can sap the momentum and viability of a project. <b>Use our experience to check your assumptions about your product and implementation.</b> We will walk through your project plan together and identify lurking pitfalls.
 
 ### Cloudy with a chance of Requirements
 Lack of clarity in requirements is only magnified in implementation. The quality of requirements reflects the clarity of the product concept. You may not hear from your developers if requirements are vague &mdash; they will struggle through, and you will not get what you envisioned. <b>We can clear the air by exposing requirement inconsistencies, tracing them back to their root in product conceptualization.</b>
